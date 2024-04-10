@@ -41,11 +41,14 @@ const displayTodo = () =>{
     todos.forEach(element => {
         const listHtml = `
         <div class="todo-items">
-            <input type="checkbox" ${element.completed ? "checked" : ""}/><span>${element.text}</span>
+            <input type="checkbox" id="todo${element.id}" ${element.completed ? "checked" : ""} ${element.completed ? "disabled" : ""} onchange="updateTodoStatus(${element.id}, this.checked)"}/>
+            <label for="todo${element.id}" ${element.completed ? "style='text-decoration: line-through;'": ""}>${element.text}</label>
         </div>
         `;
         todoList.insertAdjacentHTML("beforeend", listHtml);
+        
     });
+    
 }
 
 
@@ -57,7 +60,7 @@ inpBtn.addEventListener("click",()=>{
     if(todoText){
         let todos = getTodo();
         addTask(todos);
-        let newTodo = {completed:false,text: todoText};
+        let newTodo = {id: Date.now() , completed:false,text: todoText};
         todos.push(newTodo);
         addTask(todos);
         displayTodo();
@@ -71,3 +74,14 @@ inpBtn.addEventListener("click",()=>{
     
 })
 displayTodo();
+
+const updateTodoStatus = (id) =>{
+    let todos = getTodo();
+    console.log(todos);
+    let todo = todos.find(todo => todo.id == id);
+    if(todo){
+        todo.completed = true;
+        todo.setAttribute("disable");
+        addTask(todos);
+    }
+}
