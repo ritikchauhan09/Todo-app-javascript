@@ -29,6 +29,9 @@ const addTask = (todos) =>{
     localStorage.setItem("todos",JSON.stringify(todos))
 }
 
+
+
+
 // show data
 const displayTodo = () =>{
     let todoList = document.querySelector("#alltask");
@@ -36,13 +39,16 @@ const displayTodo = () =>{
     todoList.innerHTML = "";
 
     todos.forEach(element => {
-        
-        let li = document.createElement("li");
-        li.textContent = element.text;
-        todoList.appendChild(li);
-        console.log(element)
+        const listHtml = `
+        <div class="todo-items">
+            <input type="checkbox" ${element.completed ? "checked" : ""}/><span>${element.text}</span>
+        </div>
+        `;
+        todoList.insertAdjacentHTML("beforeend", listHtml);
     });
 }
+
+
 
 
 inpBtn.addEventListener("click",()=>{
@@ -51,7 +57,7 @@ inpBtn.addEventListener("click",()=>{
     if(todoText){
         let todos = getTodo();
         addTask(todos);
-        let newTodo = {text: todoText};
+        let newTodo = {completed:false,text: todoText};
         todos.push(newTodo);
         addTask(todos);
         displayTodo();
