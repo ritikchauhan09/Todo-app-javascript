@@ -5,9 +5,6 @@ const inpBtn = document.querySelector("#inpbtn");
 const inpTask = document.querySelector("#inptask");
 
 
-
-
-
 addBtn.addEventListener("click", () =>{
     inpContainer.removeAttribute("hidden", true);
     inpHead.setAttribute("hidden", true);
@@ -39,6 +36,7 @@ const displayTodo = () =>{
     todoList.innerHTML = "";
 
     todos.forEach(element => {
+        
         let li = document.createElement("li");
         li.textContent = element.text;
         todoList.appendChild(li);
