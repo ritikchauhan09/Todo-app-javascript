@@ -3,7 +3,7 @@ const inpContainer = document.querySelector(".InpTask");
 const inpHead = document.querySelector("#inphead");
 const inpBtn = document.querySelector("#inpbtn");
 const inpTask = document.querySelector("#inptask");
-
+const clearAll = document.querySelector("#clearall");
 
 addBtn.addEventListener("click", () =>{
     inpContainer.removeAttribute("hidden", true);
@@ -96,3 +96,8 @@ const delData = (id) =>{
     addTask(todo);
     displayTodo();
 }
+
+clearAll.addEventListener("click", () =>{
+    localStorage.clear();
+    displayTodo();
+});

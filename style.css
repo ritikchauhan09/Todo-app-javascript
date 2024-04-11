@@ -84,6 +84,10 @@ body {
   background: transparent;
   padding: 10px;
   border-style: none;
+  position: absolute;
+  bottom: 20px;
+  right: 30px;
+  cursor: pointer;
 }
 
 /*# sourceMappingURL=style.css.map */
