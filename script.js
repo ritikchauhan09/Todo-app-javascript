@@ -43,6 +43,7 @@ const displayTodo = () =>{
         <div class="todo-items">
             <input type="checkbox" id="todo${element.id}" ${element.completed ? "checked" : ""} ${element.completed ? "disabled" : ""} onchange="updateTodoStatus(${element.id}, this.checked)"}/>
             <label for="todo${element.id}" ${element.completed ? "style='text-decoration: line-through;'": ""}>${element.text}</label>
+            <button onclick="delData(${element.id})">delete</button>
         </div>
         `;
         todoList.insertAdjacentHTML("beforeend", listHtml);
@@ -81,7 +82,13 @@ const updateTodoStatus = (id) =>{
     let todo = todos.find(todo => todo.id == id);
     if(todo){
         todo.completed = true;
-        todo.setAttribute("disable");
         addTask(todos);
     }
+}
+
+const delData = (id) =>{
+    let todos = getTodo();
+    let todo = todos.filter(todo=> todo.id !== id);
+    addTask(todo);
+    displayTodo();
 }
