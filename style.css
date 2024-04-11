@@ -51,8 +51,39 @@ body {
   border-style: none;
   position: absolute;
   bottom: 30px;
-  left: 30px;
+  left: 40px;
   cursor: pointer;
+}
+
+.tasks {
+  background-color: #fefae0;
+  height: 50vh;
+  margin: 40px;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.todo-items {
+  margin: 10px;
+  background-color: #e9edc9;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.todo-items input {
+  margin-right: 10px;
+}
+.todo-items button {
+  background: transparent;
+  border-style: none;
+  cursor: pointer;
+}
+
+#clearall {
+  background: transparent;
+  padding: 10px;
+  border-style: none;
 }
 
 /*# sourceMappingURL=style.css.map */

@@ -41,9 +41,13 @@ const displayTodo = () =>{
     todos.forEach(element => {
         const listHtml = `
         <div class="todo-items">
+        <div>
             <input type="checkbox" id="todo${element.id}" ${element.completed ? "checked" : ""} ${element.completed ? "disabled" : ""} onchange="updateTodoStatus(${element.id}, this.checked)"}/>
             <label for="todo${element.id}" ${element.completed ? "style='text-decoration: line-through;'": ""}>${element.text}</label>
-            <button onclick="delData(${element.id})">delete</button>
+            </div>
+            <div>
+            <button onclick="delData(${element.id})"><img src="trash.png" height="20px"/></button>
+            </div>
         </div>
         `;
         todoList.insertAdjacentHTML("beforeend", listHtml);
